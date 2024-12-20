@@ -23,7 +23,7 @@ options(shiny.maxRequestSize = 100*1024^2) # 100 MB, change according to genome 
 # #####-
 # # Debug----
 # # #####-
-#setwd("~/6_TransposableElements/TEammo_app_v2.1/")
+setwd("~/6_TransposableElements/TEammo_app_v2.1/")
 # input <- list()
 # input$teBuscoLib <- "BUSCO_libs/nematoda_odb10_ALL.hmm"
 # input$leftTrim <- 2
