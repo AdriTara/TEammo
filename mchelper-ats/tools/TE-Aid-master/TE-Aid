@@ -300,7 +300,10 @@ if [ -s $OUTPUT/TE.orfs ]
   else
     echo "no ORF detected, skipping blastp..."
 fi
+cp $OUTPUT/orftetable $OUTPUT/$TENAME.orftetable
 # run R script with user-defined parameters
+blastn -query $QUERY -db $GENOME -evalue $EVALUE -outfmt 6 | sed 's/#/-/g' > $OUTPUT/$TENAME.genome.blastn.out #this way it is stored where we want
+blastn -query $QUERY -db $OUTPUT/TE.db -evalue 0.05 -outfmt 6 -word_size 11 -gapopen 5 -gapextend 2 -reward 2 -penalty -3 | sed 's/#/-/g' > $OUTPUT/$TENAME.self.blastn.out
 if [ $ALLTAB == "TRUE" ]
   then
   Rscript $DIR/Run-c2g.R $QUERY $GENOME $EVALUE $FL $ALPHA $FULL_ALPHA $AUTO_Y $OUTPUT $OUTPUT/TE.db $OUTPUT/orftetable $MINORF $DIR $ALLTAB
